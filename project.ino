@@ -11,9 +11,10 @@
 #include <BlynkSimpleEsp32.h>
 
 // Insert your network credentials
-const char* ssid     = "Sakthi";
+const char* ssid     = "Thanmozi";
 const char* password = "12345678";
 #define AUTH "kGjGoKuWpmuBqOI1YavxBp-0WThjUIk0" 
+int reading;
 
 // NTP Server Details
 const char* ntpServer = "pool.ntp.org";
@@ -34,6 +35,7 @@ BlynkTimer timer;
 #define green 27
 #define yellow 12
 #define ss 2
+#define wifiledb 17
 #define DHTPIN 0
 DHT_Unified dht(DHTPIN, DHT11);
 
@@ -184,11 +186,13 @@ void checkBlynkStatus() { // called every 2 seconds by SimpleTimer
   bool isconnected = Blynk.connected();
   if (isconnected == false) {
     wifiFlag = 1;
-    digitalWrite(wifiLed, LOW); //Turn OFF WiFi LED
+    digitalWrite(wifiLed, LOW);//Turn OFF WiFi LED
+    digitalWrite(wifiledb, HIGH);
   }
   if (isconnected == true) {
     wifiFlag = 0;
     digitalWrite(wifiLed, HIGH); //Turn ON WiFi LED
+    digitalWrite(wifiledb, LOW);
   }
 }
 
@@ -401,7 +405,8 @@ void setup() {
   pinMode(blue,OUTPUT);
   pinMode(green,OUTPUT);
   pinMode(yellow,OUTPUT);
-  pinMode(ss,OUTPUT);
+  pinMode(ss,INPUT);
+  pinMode(wifiledb,OUTPUT);
 
   dht.begin();
   
@@ -497,8 +502,7 @@ void loop() {
 
   tempe = bmp.readTemperature();
   display.clearDisplay();
-  // read the state of the switch into a local variable
-  int reading;
+  //read the state of the touch
   if (touchRead(T0)>50)
   {
     reading = HIGH;
