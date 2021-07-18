@@ -11,7 +11,7 @@
 #include <BlynkSimpleEsp32.h>
 
 // Insert your network credentials
-const char* ssid     = "Thanmozi";
+const char* ssid     = "Sheerio";
 const char* password = "12345678";
 #define AUTH "kGjGoKuWpmuBqOI1YavxBp-0WThjUIk0" 
 int reading;
@@ -451,7 +451,6 @@ void setup() {
     Serial.println(icons[f][DELTAY], DEC);
   }
 
-  boolean b = true;
   while(WiFi.status() != WL_CONNECTED){ // Loop forever...
     display.clearDisplay(); // Clear the display buffer
 
