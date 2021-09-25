@@ -76,5 +76,6 @@ RED LED | GPIO-05
 BLUE LED | GPIO-32
 GREEN LED | GPIO-27
 YELLOW LED | GPIO-12
+
 ![Hardware circuit connection ](https://user-images.githubusercontent.com/75389172/129440361-15ad3e28-349d-44c3-ba63-5a1543cae274.png)
 The microcontroller needs to be powered by constant 5v 1A power supply via the vin and ground pin or using the micro-USB port, we will be using the USB type A to micro-USB cable and a charger adaptor for powering as it is maintained under specified range, the microcontroller can maximum output of 5v,3.3v with the maximum current flow of 80mA so to limit the current flow 270 ohm resistors are used in series with the led for a stable output and all the connections are made in the breadboard, our project consist of a touch sensor which can be connected to any Metalica surfaces to make it touch sensitive, the touch sensor measures the amount of charge present in the surface, this touch sensor is used to switch between the displays(screens) and the touch sensor is ground isolated from the supply , more over the microcontroller board has a built in voltage regulator so we can power it up with 3.3V to 12V supply
